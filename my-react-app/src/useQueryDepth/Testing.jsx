@@ -1,4 +1,4 @@
-import "./App.css";
+import "../App.css";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 const POSTS = [
   {
@@ -18,7 +18,7 @@ function wait(duration) {
   );
 }
 
-function queryFunction(args) {
+export function queryFunction(args) {
   console.log("args", args);
   return wait(1000).then(() => [...POSTS]);
 }
@@ -33,13 +33,20 @@ function queryFunction(args) {
 // /posts?userId=1 => ["posts",{authorId: 1}]]
 // /posts/1/comments => ["posts",{post.id}, "comments"]
 
-function UseQueryDepth() {
+function Testing() {
   console.log(POSTS);
   const postsQuery = useQuery({
     queryKey: ["posts"],
     queryFn: queryFunction,
     // queryFn: errorFunction,
   });
+
+  // Dependat query -> use enabled keyword
+  // const dependantQuery = useQuery({
+  //   queryKey: ["users", postsQuery?.data?.userId],
+  //   enabled: postsQuery?.data?.userId != null,
+  //   queryFn: () => getUserDetails(postsQuery?.data?.userId)
+  // })
 
   console.log("postsQuery.fetchStatus", postsQuery.fetchStatus); // fetching -> idle or paused (when no internet)
   console.log("postsQuery.status", postsQuery.status); // pending -> success or error
@@ -59,4 +66,4 @@ function UseQueryDepth() {
   );
 }
 
-export default UseQueryDepth;
+export default Testing;

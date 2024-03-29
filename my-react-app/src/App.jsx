@@ -1,5 +1,5 @@
 import BasicExample from "./BasicExample";
-import UseQueryDepth from "./useQueryDepth";
+import UseQueryDepth from "./useQueryDepth/index";
 
 function App() {
   return (
