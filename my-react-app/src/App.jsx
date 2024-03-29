@@ -1,9 +1,11 @@
 import BasicExample from "./BasicExample";
+import UseQueryDepth from "./useQueryDepth";
 
 function App() {
   return (
     <>
-      <BasicExample />
+      {/* <BasicExample /> */}
+      <UseQueryDepth />
     </>
   );
 }
